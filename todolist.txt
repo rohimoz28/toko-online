@@ -1,0 +1,2 @@
+1. Create register form for new user
+2. Fix password login to use encryption
