@@ -28,10 +28,9 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        <?php $i = 1; ?>
                         <?php foreach ($barang as $brg) : ?>
                             <tr>
-                                <td> <?= $i++ ?> </td>
+                                <td> <?= ++$start ?> </td>
                                 <td> <?= $brg->nama_brg ?> </td>
                                 <td> <?= $brg->stok ?> </td>
                                 <td>Rp.<?= $brg->harga ?> </td>
@@ -44,6 +43,7 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+                <?= $this->pagination->create_links(); ?>
             </div>
         </div>
     </div>

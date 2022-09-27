@@ -20,9 +20,22 @@ class Data_barang extends CI_Controller
     }
     public function index()
     {
-        $data['barang'] = $this->M_barang->tampil_data()->result();
+        // load lib pagination
+        $this->load->library('pagination');
+        // config
+        // config file application/config/pagination.php
+        $config['base_url'] = base_url() . 'admin/data_barang/index';
+        $config['total_rows'] = $this->M_barang->totalBarang();
+        $config['per_page'] = 5;
+        // initialize
+        $this->pagination->initialize($config);
+
+        $data['start'] = $this->uri->segment(4);
+        $data['barang'] = $this->M_barang->data($config['per_page'], $data['start']);
+
         $this->load->view('templates/header');
-        $this->load->view('templates/sidebar_admin');
+        // $this->load->view('templates/sidebar_admin');
+        $this->load->view('templates/sidebar_admin_dashboard');
         $this->load->view('admin/data_barang', $data);
         $this->load->view('templates/footer');
     }
@@ -37,8 +50,8 @@ class Data_barang extends CI_Controller
         $gambar     = $_FILES['gambar']['name'];
 
         if ($gambar) {
-            $config['upload_path']          = './uploads';
-            $config['allowed_types']        = 'gif|jpg|jpeg|png';
+            $config['upload_path']      = './uploads';
+            $config['allowed_types']    = 'gif|jpg|jpeg|png';
 
             $this->load->library('upload', $config);
 
@@ -57,7 +70,6 @@ class Data_barang extends CI_Controller
                     'gambar' => $gambar
                 ];
 
-
                 $this->M_barang->tambah_barang($data, 'tb_barang');
                 redirect('admin/data_barang');
             }
@@ -69,7 +81,8 @@ class Data_barang extends CI_Controller
         $where = ['id_brg' => $id];
         $data['barang'] = $this->M_barang->edit_barang($where, 'tb_barang')->result();
         $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
+        // $this->load->view('templates/sidebar');
+        $this->load->view('templates/sidebar_admin_dashboard');
         $this->load->view('admin/edit_barang', $data);
         $this->load->view('templates/footer');
     }

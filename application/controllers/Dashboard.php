@@ -37,7 +37,7 @@ class Dashboard extends CI_Controller
     public function detail_keranjang()
     {
         $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
+        $this->load->view('templates/sidebar_detail_keranjang');
         $this->load->view('detail_keranjang');
         $this->load->view('templates/footer');
     }
@@ -51,7 +51,7 @@ class Dashboard extends CI_Controller
     public function pembayaran()
     {
         $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
+        $this->load->view('templates/sidebar_detail_keranjang');
         $this->load->view('pembayaran');
         $this->load->view('templates/footer');
     }
@@ -62,7 +62,7 @@ class Dashboard extends CI_Controller
         if ($is_processed) {
             $this->cart->destroy();
             $this->load->view('templates/header');
-            $this->load->view('templates/sidebar');
+            $this->load->view('templates/sidebar_detail_keranjang');
             $this->load->view('pembayaran_proses');
             $this->load->view('templates/footer');
         } else {

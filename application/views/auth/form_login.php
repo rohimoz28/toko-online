@@ -36,11 +36,11 @@
 
                 <form class="user" method="POST" action="<?= base_url('auth/login'); ?>">
                   <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="email" name="username" placeholder="user">
+                    <input type="text" class="form-control form-control-user" id="email" name="username" placeholder="Username">
                     <?php echo form_error('username', '<div class="text-danger pl-3">', '</div>'); ?>
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="1234">
+                    <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
                     <?php echo form_error('password', '<div class="text-danger pl-3">', '</div>'); ?>
                   </div>
 
@@ -50,6 +50,7 @@
                 </form>
                 <hr>
                 <div class="text-center">
+                  <a class="small" href="<?= base_url('/') ?>">Back</a><br>
                   <a class="small" href="<?= base_url('auth/register') ?>">Create an Account!</a>
                 </div>
               </div>

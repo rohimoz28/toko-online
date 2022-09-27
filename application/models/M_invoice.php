@@ -68,4 +68,16 @@ class M_invoice extends CI_Model
             return false;
         }
     }
+
+    public function totalInvoice()
+    {
+        // $this->db->where('stok >= 0');
+        $query = $this->db->get('tb_barang');
+        return $query->num_rows();
+    }
+
+    public function data($number, $offset)
+    {
+        return $this->db->get('tb_invoice', $number, $offset)->result();
+    }
 }

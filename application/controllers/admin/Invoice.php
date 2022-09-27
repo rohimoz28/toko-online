@@ -20,9 +20,22 @@ class Invoice extends CI_Controller
     }
     public function index()
     {
-        $data['invoices'] = $this->M_invoice->tampil_data();
+        // load lib pagination
+        $this->load->library('pagination');
+        // config
+        // config file application/config/pagination.php
+        $config['base_url'] = base_url() . 'admin/invoice/index';
+        $config['total_rows'] = $this->M_invoice->totalInvoice();
+        $config['per_page'] = 5;
+        // initialize
+        $this->pagination->initialize($config);
+
+        $data['start'] = $this->uri->segment(4);
+        $data['invoices'] = $this->M_invoice->data($config['per_page'], $data['start']);
+
         $this->load->view('templates/header');
-        $this->load->view('templates/sidebar_admin');
+        // $this->load->view('templates/sidebar_admin');
+        $this->load->view('templates/sidebar_admin_dashboard');
         $this->load->view('admin/invoice', $data);
         $this->load->view('templates/footer');
     }
@@ -33,7 +46,8 @@ class Invoice extends CI_Controller
         $data['pesanan']    = $this->M_invoice->getIdPesanan($id_invoice);
 
         $this->load->view('templates/header');
-        $this->load->view('templates/sidebar_admin');
+        // $this->load->view('templates/sidebar_admin');
+        $this->load->view('templates/sidebar_admin_dashboard');
         $this->load->view('admin/detail_invoice', $data);
         $this->load->view('templates/footer');
     }

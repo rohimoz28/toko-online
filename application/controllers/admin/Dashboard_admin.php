@@ -20,9 +20,12 @@ class Dashboard_admin extends CI_Controller
     }
     public function index()
     {
+        $data['total_barang'] = $this->M_barang->totalBarang();
+        $data['total_invoice'] = $this->M_invoice->totalInvoice();
+
         $this->load->view('templates/header');
-        $this->load->view('templates/sidebar_admin');
-        $this->load->view('admin/index');
+        $this->load->view('templates/sidebar_admin_dashboard');
+        $this->load->view('admin/index', $data);
         $this->load->view('templates/footer');
     }
 }

@@ -1,2 +1,3 @@
-1. Create register form for new user
-2. Fix password login to use encryption
+1. buat fitur search di admin/data_barang & admin/invoice
+2. buat pagination di halaman /welcome - show all product
+3. buat detail product admin/data_barang

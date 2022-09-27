@@ -59,4 +59,16 @@ class M_barang extends CI_Model
   {
     return $this->db->where('id_brg', $id_barang)->get('tb_barang')->result();
   }
+
+  public function totalBarang()
+  {
+    // $this->db->where('stok >= 0');
+    $query = $this->db->get('tb_barang');
+    return $query->num_rows();
+  }
+
+  public function data($number, $offset)
+  {
+    return $this->db->get('tb_barang', $number, $offset)->result();
+  }
 }

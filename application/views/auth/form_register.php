@@ -27,19 +27,19 @@
 
                 <form class="user" method="POST" action="<?= base_url('auth/register'); ?>">
                   <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="name">
+                    <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="Your name">
                     <?php echo form_error('name', '<div class="text-danger pl-3">', '</div>'); ?>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="user">
+                    <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Username">
                     <?php echo form_error('username', '<div class="text-danger pl-3">', '</div>'); ?>
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="1234">
+                    <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
                     <?php echo form_error('password', '<div class="text-danger pl-3">', '</div>'); ?>
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control form-control-user" id="password_confirmation" name="password_confirmation" placeholder="1234">
+                    <input type="password" class="form-control form-control-user" id="password_confirmation" name="password_confirmation" placeholder="Re-type password">
                     <?php echo form_error('password_confirmation', '<div class="text-danger pl-3">', '</div>'); ?>
                   </div>
 
@@ -48,6 +48,9 @@
                   </button>
                 </form>
                 <hr>
+                <div class="text-center">
+                  <a class="small" href="<?= base_url('/') ?>">Back</a><br>
+                </div>
               </div>
             </div>
           </div>
